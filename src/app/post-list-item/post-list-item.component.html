@@ -1,0 +1,20 @@
+  <div href="#" [ngClass]="{
+                'list-group-item': true,
+                'flex-column': true,
+                'align-items-start': true,
+                'list-group-item-success': selectedPost.loveIts > 0,
+                'list-group-item-danger': selectedPost.loveIts <0}"
+  >
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ selectedPost.title }}</h5>
+      <small>{{ selectedPost.created_at | date: 'd/MM/yy, h:mm a' }}</small>
+    </div>
+    <p class="mb-1">{{selectedPost.content}}</p>
+
+      <!--<small> {{selectedPost.loveIts}}</small>-->
+      <div class="w-100 row">
+          <div class="col-sm-6 text-center"> <button type="button" (click)="onModifierlove(true)" class="btn btn-success">Love It</button></div>
+          <div class="col-sm-6 text-center"> <button type="button" (click)="onModifierlove(false)" class="btn btn-danger ">Don't Love It</button></div>
+      </div>
+
+  </div>
