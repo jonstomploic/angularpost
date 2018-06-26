@@ -1,6 +1,9 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PostService} from '../services/post.service';
 
-import { Post} from '../post';
+import {Post} from '../post';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -11,27 +14,25 @@ import { Post} from '../post';
 export class PostListComponent implements OnInit {
 
 
-    @Input() LESPOSTS: Post[];
+    LESPOSTS: Post[];
+    postSubscription: Subscription;
 
-    constructor() {}
-
-  ngOnInit() {
-
-      console.log("list post");
-      console.log(this.LESPOSTS);
-
-      for(let i =0; i<5 ; i++){
-          this.LESPOSTS.push( {
-              title: "MON POST N°"+i,
-              content: "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
-              loveIts: 0,
-              created_at: new Date()
-          })
-      }
+    constructor(private postService: PostService) {
+    }
 
 
-      console.log(this.LESPOSTS);
+    ngOnInit() {
 
-  }
+
+
+        this.postSubscription = this.postService.postSubject.subscribe(
+            (posts: Post[]) => {
+                this.LESPOSTS = posts;
+                // console.log(posts);
+            }
+        );
+        this.postService.emitPost();
+
+    }
 
 }

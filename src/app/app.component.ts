@@ -1,31 +1,35 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 
-import { Post} from './post';
+//import { Post} from './post';
+//import {PostService} from "./services/post.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'GESTION DES POSTS';
+export class AppComponent implements OnInit{
 
-/*
-  POSTSARRAY: Post[] = [
-      {title :'name1' , content:'content' , loveIts : 0 , created_at : new Date},
-      {title :'name2' , content:'content' , loveIts : 0 , created_at : new Date},
-      {title :'name3' , content:'content' , loveIts : 0 , created_at : new Date},
-      {title :'name4' , content:'content' , loveIts : 0 , created_at : new Date}
-      ]
-  ;
-*/
+  isAuth = false;
 
-    POSTSARRAY: Post[] =[] ;
+
+   // POSTSARRAY: Post[] =[] ;
 
 
 
+    //constructor(private appareilService: PostService) {
+        constructor() {
+        setTimeout(
+            () => {
+                this.isAuth = true;
+            }, 4000
+        );
+    }
 
 
+    ngOnInit(){
+
+    }
 
 
 

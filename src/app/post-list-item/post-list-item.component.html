@@ -13,8 +13,14 @@
 
       <!--<small> {{selectedPost.loveIts}}</small>-->
       <div class="w-100 row">
-          <div class="col-sm-6 text-center"> <button type="button" (click)="onModifierlove(true)" class="btn btn-success">Love It</button></div>
-          <div class="col-sm-6 text-center"> <button type="button" (click)="onModifierlove(false)" class="btn btn-danger ">Don't Love It</button></div>
+          <div class="col-sm-6 text-center">
+            <button type="button" (click)="onModifierlove(true)" class="btn btn-success">Love It</button>
+            <button type="button" (click)="onModifierlove(false)" class="btn btn-danger ">Don't Love It</button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <button type="button" (click)="onRemovepost()" class="btn btn-outline-dark ">Supprimer</button>
+
+          </div>
       </div>
 
   </div>

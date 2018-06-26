@@ -1,5 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
-
+import { PostService} from '../services/post.service';
 import { Post} from '../post';
 
 
@@ -10,20 +10,31 @@ import { Post} from '../post';
 })
 export class PostListItemComponent implements OnInit {
 
-    @Input() selectedPost : Post ;
+   // @Input() selectedPost : Post ;
+    selectedPost : Post ;
+    @Input() id : number ;
 
-  constructor() { }
 
-  ngOnInit() {
 
-  }
 
-  onModifierlove(value:boolean)
-  {
-      // true = +1 ; false = -1
-      if(value === false ) this.selectedPost.loveIts -= 1;
-      else this.selectedPost.loveIts +=1;
-   }
+    constructor(private postService: PostService) {}
+
+      ngOnInit() {
+          this.selectedPost = this.postService.post[this.id]
+          //console.log(this.postService.post[this.id]);
+
+      }
+
+    onModifierlove(value:boolean)
+    {
+      this.postService.ModifLoveIt(value ,this.id);
+    }
+
+
+    onRemovepost()
+    {
+        this.postService.removePost(this.id);
+    }
 
 
 
